@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order importer</title>
+</head>
+<body>
+<input type="file"  id="uploadCsv1" accept=".csv">
+<button id="uploadCsv1Btn">Read Csv 1</button>
+
+
+<script type="text/javascript" src="/papaparse.min.js"></script>
+
+<script type="text/javascript">
+    let uploadCsv1BtnJs = document.getElementById("uploadCsv1Btn").addEventListener("click",()=>
+    {
+        Papa.parse(document.getElementById("uploadCsv1").files[0],{
+            download : true,
+            header : true,
+            complete : function(results){
+                //console.log(results);
+                let resultsArray = results.data;
+                
+                resultsArray.forEach(element => {
+                    console.log(`Product Code: ${element["product_code"]}   Product Name: ${element["product_name(do not edit)"]}  Quantity type ${element["quantity_type(do not edit)"]}`);
+                });
+            
+            }
+        });
+    });
+        
+
+</script>
+</body>
+</html>
