@@ -56,6 +56,7 @@ function compareAndAdd (productDataArray, priceChangeArray){
             tempHolder["product_code"] = e2["product_code"];
             //additional properties for the csv
             arrayToMakeFinalCsv.push(tempHolder);
+    
         }
           
     }));
@@ -68,8 +69,10 @@ function compareAndAdd (productDataArray, priceChangeArray){
 
     console.log(priceChangeArray);
 
-   
+
+
+   }
     
+  
 
     //can retrun 2 arrays now :)
-}
