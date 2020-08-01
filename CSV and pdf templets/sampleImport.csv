@@ -1,0 +1,3 @@
+Order Reference Id,Venue Group,Venue,Venue Department,Venue Department Customer Code,Distributor Group,Distributor,Submitted Date,Expected Delivery Date,Order Notes,Order Total,Line Item Unique Reference,SKU,Item Name,Item Notes,QTY,Unit,Price,Price Unit,Sub Total,Tax,Total
+123456,Fruitastic - Moorabbin,Fruitastic - Moorabbin,Kitchen,11251,Scicluna's Wholesale,Melbourne,22/07/2020,24/07/2020,,1,4838422,P2049,Parsley - Continental Bunch,,4,Bunch,1.75,p/bunch,1,0,1
+end,1,lines,,,,,,,,,,,,,,,,,,,
