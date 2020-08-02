@@ -1,5 +1,6 @@
 
 
+
 var productDataArray;
     let uploadCsv1BtnJs = document.getElementById("uploadCsv1Btn").addEventListener("click",()=>
     {
@@ -28,8 +29,7 @@ var productDataArray;
             complete: function(results){
                 priceChangeArrayTemp = results.data;
                 //console.log(priceChangeArrayTemp);
-                 priceChangeArray = priceChangeArrayTemp.map(element => {
-                    console.log("map")   
+                 priceChangeArray = priceChangeArrayTemp.map(element => {  
                      let currentObj ={};
                    currentObj["product_name(do not edit)"] = element[0];
                    currentObj["quantity_type(do not edit)"] = element[1];
@@ -43,7 +43,7 @@ var productDataArray;
         })
     })
 
-let compareAndAddButton = document.getElementById("runCompareAndAdd").addEventListener("click", compareAndAdd(productDataArray,priceChangeArray));
+let compareAndAddButton = document.getElementById("runCompareAndAdd").addEventListener("click", ()=>{compareAndAdd(productDataArray,priceChangeArray)});
 
 function compareAndAdd (productDataArray, priceChangeArray){
     var arrayToMakeFinalCsv =[];// have to make the object according to the csv fields.
@@ -61,15 +61,26 @@ function compareAndAdd (productDataArray, priceChangeArray){
           
     }));
 
-
-
     // now we have arraytoMakeFinalCsv which contains the exact match for our condition. so if we filter these from the initial array which is priceChangeArray we get the 
     //arrayWithNotmatchedProdcts
     console.log(arrayToMakeFinalCsv);
-
     console.log(priceChangeArray);
 
+    var priceChangeArrayCopy = JSON.parse(JSON.stringify(priceChangeArray)); // making a deep copy of the priceChangeArray 
 
+    let removeAddedProductsFromPriceChangeArray = (priceChangeArrayCopy,arrayToMakeFinalCsv)=>{
+        arrayToMakeFinalCsv.forEach((e)=> {
+            priceChangeArrayCopy.forEach((e2,index)=>{
+              if(  e["product_name(do not edit)"] === e2["product_name(do not edit)"]){
+                  priceChangeArrayCopy.splice(index,1);
+              }
+            })
+        });
+    }
+
+    removeAddedProductsFromPriceChangeArray(priceChangeArrayCopy,arrayToMakeFinalCsv);
+    arrayWithNotMatchedProducts = priceChangeArrayCopy;
+    console.log(arrayWithNotMatchedProducts);
 
    }
     
