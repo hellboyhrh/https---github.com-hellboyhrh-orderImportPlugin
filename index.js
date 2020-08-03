@@ -1,3 +1,5 @@
+
+
 var productDataArray;
 let uploadCsv1BtnJs = document
 	.getElementById('uploadCsv1Btn')
@@ -32,7 +34,7 @@ let uploadPdfCsvBtnJs = document
 					currentObj['product_name(do not edit)'] = element[0];
 					currentObj['quantity_type(do not edit)'] = element[1];
 					currentObj['product_price'] = element[2];
-					currentObj['prproduct_quantity'] = element[3];
+					currentObj['product_quantity'] = element[3];
 					return currentObj;
 					//console.log(currentObj);
 				});
@@ -60,7 +62,9 @@ function compareAndAdd(productDataArray, priceChangeArray) {
 				let tempHolder = {};
 				tempHolder['product_name(do not edit)'] =
 					e2['product_name(do not edit)'];
-				tempHolder['product_code'] = e2['product_code'];
+                tempHolder['product_code'] = e2['product_code'];
+                tempHolder['product_price'] = e1['product_price'];
+                tempHolder['product_quantity'] = e1['product_quantity'];
 				//additional properties for the csv
 				arrayToMakeFinalCsv.push(tempHolder);
 			}
@@ -95,6 +99,113 @@ function compareAndAdd(productDataArray, priceChangeArray) {
 	);
 	arrayWithNotMatchedProducts = priceChangeArrayCopy;
 	console.log(arrayWithNotMatchedProducts);
-}
 
+
+
+
+   var exportCsvTest = arrayToMakeFinalCsv.map((e)=>{
+        let tempHolder ={"Order Reference Id" :"",
+        "Venue Group" :"",//customer name 
+        "Venue" : "",
+        "Venue Department" : "",
+        "Venue Department Customer Code":'', //customer code
+        "Distributor Group":'',
+        "Distributor":'',
+        "Submitted Date":'',
+        "Expected Delivery Date":'', //current date
+        "Order Notes":'',
+        "Line Item Unique Reference":'',
+        "SKU":'', //product code
+        "Item Name":'', // product name
+        "Item Notes":'',
+        "QTY":'', // product quantity
+        "Unit":'',
+        "Price":'', // product price
+        "Price Unit":'',
+        "Sub Total":'',
+        "Tax":'',
+        "Total":''
+    };
+        tempHolder["SKU"] = (e['product_code']).replace(/'/g,"");
+        tempHolder["Item Name"] = e['product_name(do not edit)'];
+        tempHolder["QTY"] = e['product_quantity'];
+        tempHolder["Price"] = e['product_price'];
+        tempHolder["Venue Group"] = "Wastage";
+        tempHolder["Venue Department Customer Code"] = 10259;
+        tempHolder["Expected Delivery Date"] = "03/08/2020";
+
+        return tempHolder;
+
+    });
+
+    let headerRow = {"Order Reference Id" :"" ,
+        "Venue Group" :"",//customer name 
+        "Venue" : "",
+        "Venue Department" : "",
+        "Venue Department Customer Code":'', //customer code
+        "Distributor Group":'',
+        "Distributor":'',
+        "Submitted Date":'',
+        "Expected Delivery Date":'', //current date
+        "Order Notes":'',
+        "Line Item Unique Reference":'',
+        "SKU":'', //product code
+        "Item Name":'', // product name
+        "Item Notes":'',
+        "QTY":'', // product quantity
+        "Unit":'',
+        "Price":'', // product price
+        "Price Unit":'',
+        "Sub Total":'',
+        "Tax":'',
+        "Total":''}
+
+        exportCsvTest.splice(0,0,headerRow);
+        exportCsvTest.push({end:""});
+            
+console.log(exportCsvTest);
+
+//unparsing to csv file is done here.
+
+let csv = Papa.unparse(exportCsvTest,{
+	quotes: false, //or array of booleans
+	quoteChar: '"',
+	escapeChar: '"',
+	delimiter: ",",
+	header: true,
+	newline: "\r\n",
+	skipEmptyLines: false, //other option is 'greedy', meaning skip delimiters, quotes, and whitespace.
+	columns: null //or array of strings
+}
+    
+);
+console.log(csv);
+
+}
 //can retrun 2 arrays now :)
+
+
+function createExprotCsv (arraytoMakeFinalCsv){
+    let headerRow = {"Order Reference Id" :"" ,
+        "Venue Group" :"",//customer name 
+        "Venue" : "",
+        "Venue Department" : "",
+        "Venue Department Customer Code":'', //customer code
+        "Distributor Group":'',
+        "Distributor":'',
+        "Submitted Date":'',
+        "Expected Delivery Date":'', //current date
+        "Order Notes":'',
+        "Line Item Unique Reference":'',
+        "SKU":'', //product code
+        "Item Name":'', // product name
+        "Item Notes":'',
+        "QTY":'', // product quantity
+        "Unit":'',
+        "Price":'', // product price
+        "Price Unit":'',
+        "Sub Total":'',
+        "Tax":'',
+        "Total":''
+
+    }}
