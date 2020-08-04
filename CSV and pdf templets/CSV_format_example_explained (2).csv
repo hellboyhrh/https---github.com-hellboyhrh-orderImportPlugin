@@ -1,0 +1,17 @@
+,Order Reference Id,Venue Group,Venue,Venue Department,Venue Department Customer Code,Distributor Group,Distributor,Submitted Date,Expected Delivery Date,Order Notes,Order Total,Line Item Unique Reference,SKU,Item Name,Item Notes,QTY,Unit,Price,Price Unit,Sub Total,Tax,Total
+,,Smith Restaurant,,,343,,,,23/12/18,,,5247148,ci,Beef Sirloin,,23,Kg,,,,,
+,,Smith Restaurant,,,343,,,,23/12/18,,,5247190,cir,Beef Scotch,best quality please,6,Kg,,,,,
+,end,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,
+Mandatory,NO,NO,NO,NO,YES,NO,NO,NO,YES,NO,NO,NO,YES,NO,NO,YES,NO,NO,NO,NO,NO,NO
+Recommended,YES,YES,NO,NO,YES,NO,NO,NO,YES,YES,NO,YES,YES,YES,YES,YES,YES,YES,NO,YES,NO,YES
+Field to be mapped,PO Number or External Reference,Restaurant Name,,,Customer Code or CardID,,,,Delivery Date. Must be DD/MM/YYYY.,Additional notes or customer notes pertaining to order,,Your product code,Supplier product code,Item Description,Notes pertaining to each line item (Limit 89 characters per note),Quantity of produce ordered,Unit of order,Price,,,,Total price of line item
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,
+,[!] All headers must be present in the file,,,,,,,,,,,,,,,,,,,,,
+,[!] end (cell B4) must be present in the file,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,
+,Note: Duplicate external references will not import,,,,,,,,,,,,,,,,,,,,,
+,Note: File must be CSV (Comma delimited) (*.csv),,,,,,,,,,,,,,,,,,,,,

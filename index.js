@@ -98,7 +98,10 @@ function compareAndAdd(productDataArray, priceChangeArray) {
 		arrayToMakeFinalCsv
 	);
 	arrayWithNotMatchedProducts = priceChangeArrayCopy;
-	console.log(arrayWithNotMatchedProducts);
+    console.log(arrayWithNotMatchedProducts);
+    
+   
+    
 
 
 
@@ -114,6 +117,7 @@ function compareAndAdd(productDataArray, priceChangeArray) {
         "Submitted Date":'',
         "Expected Delivery Date":'', //current date
         "Order Notes":'',
+        "Order Total":'',
         "Line Item Unique Reference":'',
         "SKU":'', //product code
         "Item Name":'', // product name
@@ -126,6 +130,7 @@ function compareAndAdd(productDataArray, priceChangeArray) {
         "Tax":'',
         "Total":''
     };
+        //hardcoded customer code and date. need to have a drop down and current date to select these.
         tempHolder["SKU"] = (e['product_code']).replace(/'/g,"");
         tempHolder["Item Name"] = e['product_name(do not edit)'];
         tempHolder["QTY"] = e['product_quantity'];
@@ -138,16 +143,17 @@ function compareAndAdd(productDataArray, priceChangeArray) {
 
     });
 
-    let headerRow = {"Order Reference Id" :"" ,
-        "Venue Group" :"",//customer name 
-        "Venue" : "",
-        "Venue Department" : "",
+    let headerRow = {"Order Reference Id":'' ,
+        "Venue Group" :'',//customer name 
+        "Venue" :'',
+        "Venue Department" : '',
         "Venue Department Customer Code":'', //customer code
         "Distributor Group":'',
         "Distributor":'',
         "Submitted Date":'',
         "Expected Delivery Date":'', //current date
         "Order Notes":'',
+        "Order Total":'',
         "Line Item Unique Reference":'',
         "SKU":'', //product code
         "Item Name":'', // product name
@@ -161,7 +167,7 @@ function compareAndAdd(productDataArray, priceChangeArray) {
         "Total":''}
 
         exportCsvTest.splice(0,0,headerRow);
-        exportCsvTest.push({end:""});
+       exportCsvTest.push({end:",,,,,,,,,,,,,,,,,,,,,"}); //to do.. have to add the end manually as it is not appering on the console log results somehow.
             
 console.log(exportCsvTest);
 
