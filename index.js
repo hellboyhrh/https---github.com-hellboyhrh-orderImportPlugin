@@ -186,31 +186,53 @@ let csv = Papa.unparse(exportCsvTest,{
 );
 console.log(csv);
 
+//below is the code to add the table in to the html
+let data = Object.keys(arrayWithNotMatchedProducts[0]);
+let table = document.querySelector('table');
+
+function generateTableHead (table , data){
+    let thead = table.createTHead();
+
+    let row = thead.insertRow();
+    for(let key of data){
+        let th = document.createElement("th");
+        let text = document.createTextNode(key);
+        th.appendChild(text);
+        row.appendChild(th);
+    }
+
+    
+}
+
+generateTableHead(table,data); 
+
+
 }
 //can retrun 2 arrays now :)
 
 
-function createExprotCsv (arraytoMakeFinalCsv){
-    let headerRow = {"Order Reference Id" :"" ,
-        "Venue Group" :"",//customer name 
-        "Venue" : "",
-        "Venue Department" : "",
-        "Venue Department Customer Code":'', //customer code
-        "Distributor Group":'',
-        "Distributor":'',
-        "Submitted Date":'',
-        "Expected Delivery Date":'', //current date
-        "Order Notes":'',
-        "Line Item Unique Reference":'',
-        "SKU":'', //product code
-        "Item Name":'', // product name
-        "Item Notes":'',
-        "QTY":'', // product quantity
-        "Unit":'',
-        "Price":'', // product price
-        "Price Unit":'',
-        "Sub Total":'',
-        "Tax":'',
-        "Total":''
+// function createExprotCsv (arraytoMakeFinalCsv){
+//     let headerRow = {"Order Reference Id" :"" ,
+//         "Venue Group" :"",//customer name 
+//         "Venue" : "",
+//         "Venue Department" : "",
+//         "Venue Department Customer Code":'', //customer code
+//         "Distributor Group":'',
+//         "Distributor":'',
+//         "Submitted Date":'',
+//         "Expected Delivery Date":'', //current date
+//         "Order Notes":'',
+//         "Line Item Unique Reference":'',
+//         "SKU":'', //product code
+//         "Item Name":'', // product name
+//         "Item Notes":'',
+//         "QTY":'', // product quantity
+//         "Unit":'',
+//         "Price":'', // product price
+//         "Price Unit":'',
+//         "Sub Total":'',
+//         "Tax":'',
+//         "Total":''
 
-    }}
+//     }}
+
