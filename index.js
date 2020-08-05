@@ -1,5 +1,4 @@
 
-
 var productDataArray;
 let uploadCsv1BtnJs = document
 	.getElementById('uploadCsv1Btn')
